@@ -1,6 +1,8 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
+  before_action :user_logged_in
+
   # GET /tickets
   # GET /tickets.json
   def index
@@ -15,6 +17,7 @@ class TicketsController < ApplicationController
   # GET /tickets/new
   def new
     @ticket = Ticket.new
+    @users = User.all
   end
 
   # GET /tickets/1/edit
@@ -25,7 +28,7 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
-
+    @ticket.creator_id = session[:user_id]
     respond_to do |format|
       if @ticket.save
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
@@ -69,6 +72,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:title, :content)
+      params.require(:ticket).permit(:title, :content, :responsible_id, :closed)
     end
 end

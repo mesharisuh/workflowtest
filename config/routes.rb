@@ -1,7 +1,21 @@
 Workflow::Application.routes.draw do
+
   resources :tickets
 
   resources :users
+
+
+  root :to => "sessions#login"
+  get "signup", :to => "users#new"
+  get "login", :to => "sessions#login"
+  get "logout", :to => "sessions#logout"
+  get "home", :to => "sessions#home"
+  get "profile", :to => "sessions#profile"
+  get "login_attempt", :to => "sessions#login_attempt", via: :post
+
+  post 'login_attempt', :to => "sessions#login_attempt"
+
+  resources :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
