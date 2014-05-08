@@ -1,0 +1,34 @@
+<h1><%= @user.name %> ickets</h1>
+
+
+
+<table class="table">
+    <tbody>
+        <% @tickets.each do |ticket| %>
+        <tr>
+            <td>
+                <%= link_to ticket.title, ticket %>
+            </td>
+            <td>
+                <%= ticket.content %>
+            </td>
+            <td>
+                <% if ticket.closed %>
+                    <button class="btn btn-success btn-sm" disabled="disabled"><%= "Closed" %></button>
+                <% else %>
+                    <button class="btn btn-danger btn-sm" disabled="disabled"><%= "Not Closed" %></button>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+
+    </tbody>
+
+
+
+</table>
+
+
+<br>
+
+<%= link_to 'New Ticket', new_ticket_path, :class => "btn btn-primary" %>

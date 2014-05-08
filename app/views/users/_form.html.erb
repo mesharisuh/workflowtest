@@ -11,27 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.text_field :name, :class => "form-control", :placeholder => "Name"  %>
   </div>
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
+  <div class="form-group">
+    <%= f.text_field :username, :class => "form-control", :placeholder => "Username" %>
   </div>
-  <div class="field">
-    <%= f.label :birthdate %><br>
-    <%= f.date_select :birthdate %>
+  <div class="form-group">
+    <%= f.label "Birthdate: " %>
+    <%= f.date_select :birthdate, :class => "form-control", :placeholder => "Birthdate" %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.text_field :password %>
+  <div class="form-group">
+    <%= f.text_field :password, :class => "form-control", :placeholder => "Password" %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+  <div class="form-group">
+    <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

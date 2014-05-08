@@ -10,5 +10,27 @@
   <%= @ticket.content %>
 </p>
 
+<p>
+  <strong>Creator:</strong>
+  <%= @creator.name %>
+</p>
+
+<p>
+  <strong>Responsible:</strong>
+  <%= @responsible.name %>
+</p>
+<p>
+  <strong>Closed:</strong>
+  <% if @ticket.closed %>
+  	<%= "Yes" %>
+  <% else %>
+  	<%= "No" %>
+  <% end %>
+</p>
+
+<% unless @ticket.closed %>
+  	<%= link_to 'Close This Ticket', controller: 'tickets', action: 'close_ticket' , :confirm => "Are you sure?", id: @ticket%>
+  <% end %>
+
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+<%= link_to 'Back', root_path %>

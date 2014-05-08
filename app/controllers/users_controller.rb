@@ -25,6 +25,13 @@ class UsersController < ApplicationController
   def edit
   end
 
+
+  def tickets
+    @user = User.find session[:user_id]
+    @tickets = @user.tickets_as_creator
+  end
+
+
   # POST /users
   # POST /users.json
   def create

@@ -12,6 +12,8 @@ class TicketsController < ApplicationController
   # GET /tickets/1
   # GET /tickets/1.json
   def show
+    @creator = User.find @ticket.creator_id
+    @responsible = User.find @ticket.responsible_id
   end
 
   # GET /tickets/new
@@ -23,6 +25,24 @@ class TicketsController < ApplicationController
   # GET /tickets/1/edit
   def edit
   end
+
+  def close_ticket
+
+    @ticket = Ticket.find params[:id]
+    @ticket.closed = true
+    @ticket.save
+    respond_to do |format|
+      if @ticket.save
+        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @ticket }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+      end
+    end
+    
+  end
+
 
   # POST /tickets
   # POST /tickets.json

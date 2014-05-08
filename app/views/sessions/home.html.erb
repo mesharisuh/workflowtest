@@ -1,5 +1,7 @@
 <h1>Home</h1>
 
-<%= link_to "Create Ticket", new_ticket_path %>
+<%= link_to "Show "+@current_user.name+" Tickets", user_tickets_path, :class => "btn btn-primary" %>
 
-<%= link_to @current_user.username+' Profile', @current_user %>
+<%= link_to "Create Ticket", new_ticket_path, :class => "btn btn-primary" %>
+
+<%= link_to @current_user.name+' Profile', @current_user, :class => "btn btn-primary" %>
