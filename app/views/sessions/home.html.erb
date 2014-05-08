@@ -1,6 +1,80 @@
 <h1>Home</h1>
 
-<%= link_to "Show "+@current_user.name+" Tickets", user_tickets_path, :class => "btn btn-primary" %>
+<hr>
+
+<h4><%= @user.name %></h4>
+
+<h3><%= link_to "Responsible Tickets", user_responsible_tickets_path %></h3>
+
+
+<table class="table">
+    <tbody>
+        <% @tickets_as_responsible.each do |ticket| %>
+        <tr>
+            <td>
+                <%= link_to ticket.title, ticket %>
+            </td>
+            <td>
+                <%= ticket.content %>
+            </td>
+            <td>
+                <% if ticket.closed %>
+                    <button class="btn btn-success btn-sm" disabled="disabled"><%= "Closed" %></button>
+                <% else %>
+                    <button class="btn btn-danger btn-sm" disabled="disabled"><%= "Not Closed" %></button>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+
+    </tbody>
+
+
+
+</table>
+<hr>
+
+
+
+
+
+
+<h3><%= link_to "Created Tickets", user_tickets_path %></h3>
+
+
+<table class="table">
+    <tbody>
+        <% @tickets_as_creator.each do |ticket| %>
+        <tr>
+            <td>
+                <%= link_to ticket.title, ticket %>
+            </td>
+            <td>
+                <%= ticket.content %>
+            </td>
+            <td>
+                <% if ticket.closed %>
+                    <button class="btn btn-success btn-sm" disabled="disabled"><%= "Closed" %></button>
+                <% else %>
+                    <button class="btn btn-danger btn-sm" disabled="disabled"><%= "Not Closed" %></button>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+
+    </tbody>
+
+
+
+</table>
+
+
+
+
+<%= link_to "Show "+@current_user.name+" Created Tickets", user_tickets_path, :class => "btn btn-primary" %>
+
+<%= link_to "Show "+@current_user.name+" Responsible Tickets", user_responsible_tickets_path, :class => "btn btn-primary" %>
+
 
 <%= link_to "Create Ticket", new_ticket_path, :class => "btn btn-primary" %>
 

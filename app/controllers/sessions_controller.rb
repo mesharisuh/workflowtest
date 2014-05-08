@@ -20,6 +20,9 @@ class SessionsController < ApplicationController
 	end
 
 	def home
+		@user = User.find session[:user_id]
+		@tickets_as_responsible = @user.tickets_as_responsible
+		@tickets_as_creator = @user.tickets_as_creator
 	end
 
 	def profile

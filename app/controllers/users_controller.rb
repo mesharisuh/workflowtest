@@ -31,6 +31,11 @@ class UsersController < ApplicationController
     @tickets = @user.tickets_as_creator
   end
 
+  def responsible_tickets
+    @user = User.find session[:user_id]
+    @tickets = @user.tickets_as_responsible
+  end
+
 
   # POST /users
   # POST /users.json

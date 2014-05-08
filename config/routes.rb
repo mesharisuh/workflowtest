@@ -7,6 +7,7 @@ Workflow::Application.routes.draw do
   root :to => "sessions#login"
   get "signup", :to => "users#new"
   get "user/tickets", :to => "users#tickets"
+  get "user/responsible_tickets", :to => "users#responsible_tickets"
   get "login", :to => "sessions#login"
   get "logout", :to => "sessions#logout"
   get "home", :to => "sessions#home"
